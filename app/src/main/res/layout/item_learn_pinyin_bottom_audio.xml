@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_audio"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="invisible"
+    tools:ignore="MissingDefaultResource">
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_audio_pinyin"
+        android:text=""
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/dimen_18sp"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/iv_audio_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_6dp"
+        android:background="@mipmap/ic_pinyin_sound_filling_pressed" />
+
+</LinearLayout>

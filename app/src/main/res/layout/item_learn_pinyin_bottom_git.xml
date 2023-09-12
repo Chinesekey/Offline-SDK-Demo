@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_gif"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.youth.banner.Banner
+        android:id="@+id/bannerGif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <View
+        android:visibility="gone"
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_30dp"/>
+</LinearLayout>

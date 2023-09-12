@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+
+def config = rootProject.ext.android
+
+android {
+    compileSdkVersion config.compileSdkVersion
+
+    defaultConfig {
+        applicationId config.applicationId
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+//    lintOptions {
+//        checkReleaseBuilds false
+//        abortOnError false
+//    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+
+}
+
+
+dependencies {
+    implementation(fileTree('libs'))
+    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+
+    api rootProject.ext.dependencies["androidx-appcompat"]
+    api rootProject.ext.dependencies["androidx-core"]
+    api rootProject.ext.dependencies["androidx-constraint"]
+    api rootProject.ext.dependencies["androidx-annotation"]
+
+    api rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-apt"]
+    api rootProject.ext.dependencies["glide"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    api rootProject.ext.dependencies["gson"]
+
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10"
+
+    // 打包成aar后需要这个依赖
+    implementation files('libs/ckey_94D824BEEA07545E8942BE74D0EE98AARH1NTUD0.aar')
+    //
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    //轮播图
+    implementation 'io.github.youth5201314:banner:2.2.2'
+
+
+
+}
