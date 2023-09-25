@@ -23,15 +23,18 @@ implementation files('libs/ckey_4468C36AFD28F984E7FC83C05D317DD4N91X5H5R.aar')
 ## 4. 初始化SDK
 
 在Application的onCreate方法中初始化，代码如下：
+注意：在应用中切换语言后，需要重新初始化preInit方法，以便根据语言获取相对于的汉字信息
 
 ```java
 /**
 * 其中imei为设备号、设备识别码，
 * packageName为项目包名
+ * languageCode为语言
 **/
 public void onCreate(){
-        ChinesekeyConfigure.preInit(this, imei,packageName);
-}
+        ChinesekeyConfigure.preInit(this, imei, packageName,languageCode);
+
+        }
 ```
 
 ## 5. 使用SDK
@@ -43,16 +46,16 @@ public void onCreate(){
 ```java
 /**
  * 调用getChineseCharacterByName方法获取所指定汉字信息
- * 返回指定的单个汉字的信息， 类型为： ChineseCharacter
+ * 返回指定的单个汉字的信息， 类型为： 字符串json类型
  **/
-ChineseCharacter character = ChinesekeyConfigure.getChineseCharacterByName(this,wordName);
+String str = ChinesekeyConfigure.getChineseCharacterByName(this, wordName)
 
 
 /**
  * 调用getAllChineseCharacter方法获取所有汉字信息
- * 返回数据是ChineseCharacter类型的数据集合
+ * 返回数据是json类型
  **/
-List<ChineseCharacter> list = ChinesekeyConfigure.getAllChineseCharacter(this);
+        String strs = ChinesekeyConfigure.getAllChineseCharacter(this)
 ```
 
 ## 6. 其他

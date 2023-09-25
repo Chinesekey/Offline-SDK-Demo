@@ -13,13 +13,26 @@
         android:layout_height="@dimen/dimen_45dp">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="sdkDemo"
             android:textColor="@color/black"
             android:textSize="@dimen/dimen_22dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/tvChangeLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dimen_16dp"
+            android:gravity="center"
+            android:text="简体中文"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_16dp"
             android:textStyle="bold" />
 
     </RelativeLayout>
@@ -74,50 +87,50 @@
 
 
         <LinearLayout
-            android:visibility="gone"
             android:id="@+id/mlinearDetail"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimen_12dp"
-                android:textColor="#333333"
                 android:text="点击进入汉字详情:"
+                android:textColor="#333333"
                 android:textSize="@dimen/dimen_12sp" />
 
             <LinearLayout
                 android:id="@+id/mlinearWord"
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_marginTop="@dimen/dimen_6dp"
-                android:gravity="center"
-                android:paddingTop="@dimen/dimen_16dp"
-                android:paddingBottom="@dimen/dimen_16dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimen_6dp"
                 android:background="@color/design_default_color_secondary_variant"
-                android:layout_height="wrap_content">
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/dimen_16dp"
+                android:paddingBottom="@dimen/dimen_16dp">
 
                 <TextView
                     android:id="@+id/tvPinyin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#ffffff"
                     android:text=""
+                    android:textColor="#ffffff"
                     android:textSize="@dimen/dimen_14sp" />
 
                 <TextView
                     android:id="@+id/tvWordShow"
                     android:layout_width="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_2dp"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/dimen_2dp"
                     android:background="@color/design_default_color_secondary_variant"
+                    android:text=""
                     android:textColor="#333333"
-                    android:textSize="@dimen/dimen_24sp" />
+                    android:textSize="@dimen/dimen_24sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -143,6 +156,12 @@
 
         </LinearLayout>
 
+
+        <ListView
+            android:id="@+id/mRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
 
 
     </LinearLayout>

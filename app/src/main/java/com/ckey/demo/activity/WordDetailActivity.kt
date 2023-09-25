@@ -8,17 +8,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.ckey.demo.R
-import com.ckey.demo.adapter.AlphaPageTransformerNew
+import com.ckey.demo.view.AlphaPageTransformerNew
 import com.ckey.demo.adapter.ImageAdapter
+import com.ckey.demo.adapter.CompontentAdapter
+import com.ckey.demo.bean.CharacterExhibitAudioInfo
+import com.ckey.demo.bean.ChineseCharacterInfo
 import com.ckey.demo.utils.MusicUtil
 import com.ckey.demo.utils.ScreenUtils
-import com.dictionary.sdk.bean.ChineseCharacter
+import com.dictionary.sdk.bean.CharacterExhibitAudioBean
+import com.dictionary.sdk.bean.ChineseCharacterBean
 import com.dictionary.sdk.log.XLog
 import com.dictionary.sdk.util.GsonUtils
 import com.youth.banner.config.IndicatorConfig
 import com.youth.banner.indicator.CircleIndicator
 import com.youth.banner.util.BannerUtils
 import kotlinx.android.synthetic.main.activity_word_detail.*
+import kotlinx.android.synthetic.main.item_learn_center_text.*
 import kotlinx.android.synthetic.main.item_learn_center_word.*
 import kotlinx.android.synthetic.main.item_learn_pinyin_bottom_audio.*
 import kotlinx.android.synthetic.main.item_learn_pinyin_bottom_git.*
@@ -28,7 +33,7 @@ import java.util.*
 
 class WordDetailActivity : AppCompatActivity(), View.OnClickListener {
 
-    private var character: ChineseCharacter? = null
+    private var character: ChineseCharacterInfo? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +43,10 @@ class WordDetailActivity : AppCompatActivity(), View.OnClickListener {
         val data = intent.getStringExtra("data")
         if (!TextUtils.isEmpty(data)) {
             character =
-                GsonUtils.getSingleBean(data, ChineseCharacter::class.java) as ChineseCharacter
+                GsonUtils.getSingleBean(
+                    data,
+                    ChineseCharacterInfo::class.java
+                ) as ChineseCharacterInfo
             if (character != null) {
                 if (!TextUtils.isEmpty(character!!.characterName)) {
                     tv_Word.text = character!!.characterName
@@ -54,6 +62,8 @@ class WordDetailActivity : AppCompatActivity(), View.OnClickListener {
 
                 imageShow()
 
+                intentAudioShow()
+
                 if (!TextUtils.isEmpty(character!!.characterWrite)) {
                     iv_edit.visibility = View.VISIBLE
                 } else {
@@ -66,9 +76,32 @@ class WordDetailActivity : AppCompatActivity(), View.OnClickListener {
                     initPlayer()
                 } else {
                     iv_sound_filling.visibility = View.GONE
-
                 }
 
+                if (!TextUtils.isEmpty(character!!.characterTranslation)) {
+                    tv_learn_translation.text = character!!.characterTranslation
+                }
+
+                if (!TextUtils.isEmpty(character!!.characterLiteralSense)) {
+                    learn_interpretation_more.visibility = View.VISIBLE
+                    tv_text_content.text = character!!.characterLiteralSense
+                } else {
+                    learn_interpretation_more.visibility = View.GONE
+                }
+
+//                if (!TextUtils.isEmpty(character!!.componentBasicInterpret)) {
+//                    learnBasicInterpret.visibility = View.VISIBLE
+//                    tvBasicInterpret.text = character!!.componentBasicInterpret
+//                } else {
+//                    learnBasicInterpret.visibility = View.GONE
+//                }
+
+                if (!TextUtils.isEmpty(character!!.characterResolve)) {
+                    learn_deconstruction.visibility = View.VISIBLE
+                    tvcharacterResolve.text = character!!.characterResolve
+                } else {
+                    learn_deconstruction.visibility = View.GONE
+                }
             }
         }
     }
@@ -88,6 +121,7 @@ class WordDetailActivity : AppCompatActivity(), View.OnClickListener {
         } else {
             iv_image.visibility = View.GONE
         }
+        XLog.e("-----bannerList->>>"+GsonUtils.objectToString(bannerList))
         imageAdapter!!.notifyDataSetChanged()
 
     }
@@ -106,6 +140,23 @@ class WordDetailActivity : AppCompatActivity(), View.OnClickListener {
         ivBack.setOnClickListener(this)
     }
 
+
+    private fun intentAudioShow() {
+        if (character!!.characterExhibitIntend != null && character!!.characterExhibitIntend.size != 0) {
+            var lists = character!!.characterExhibitIntend as List<CharacterExhibitAudioInfo>
+            componentLeftAdapter = CompontentAdapter(this, lists)
+            recyclerView_left.adapter = componentLeftAdapter
+        }
+
+        if (character!!.characterExhibitAudio != null && character!!.characterExhibitAudio.size != 0) {
+            var list = character!!.characterExhibitAudio as List<CharacterExhibitAudioInfo>
+            componentRightAdapter = CompontentAdapter(this, list)
+            recyclerView_right.adapter = componentRightAdapter
+        }
+    }
+
+    private var componentLeftAdapter: CompontentAdapter? = null
+    private var componentRightAdapter: CompontentAdapter? = null
 
     private var imageAdapter: ImageAdapter? = null
     private var bannerList: MutableList<String>? = null
@@ -302,5 +353,6 @@ class WordDetailActivity : AppCompatActivity(), View.OnClickListener {
         }
         mTimer!!.schedule(mTimerTask, 0, 500)
     }
+
 
 }

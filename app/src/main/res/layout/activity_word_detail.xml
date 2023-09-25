@@ -48,6 +48,8 @@
 
                 <include layout="@layout/item_learn_center_word" />
 
+                <include layout="@layout/item_learn_center_text" />
+
 
             </LinearLayout>
 

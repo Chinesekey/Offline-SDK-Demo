@@ -10,6 +10,7 @@ public class APP extends Application {
     public void onCreate() {
         super.onCreate();
         //根据设备号初始化字典sdk
-        ChinesekeyConfigure.preInit(this, "device012", this.getPackageName());
+        ChinesekeyConfigure.preInit(this, "device018", this.getPackageName(),"zh-CN");
+
     }
 }

@@ -2,7 +2,7 @@ ext {
 
     android = [
             applicationId       : "com.ckey.demo",
-            compileSdkVersion   : 31,
+            compileSdkVersion   : 33,
 
             minSdkVersion       : 21,
             targetSdkVersion    : 33,

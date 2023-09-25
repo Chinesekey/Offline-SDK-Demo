@@ -72,8 +72,11 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10"
 
     // 打包成aar后需要这个依赖
-    implementation files('libs/ckey_94D824BEEA07545E8942BE74D0EE98AARH1NTUD0.aar')
+    implementation files('libs/ckey_38EEC360B27B476D9CE9AA23D1DB89C0QED6NF7C.aar')
     //
+//    implementation project(path: ':dictionarysdk')
+    implementation project(':library')
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

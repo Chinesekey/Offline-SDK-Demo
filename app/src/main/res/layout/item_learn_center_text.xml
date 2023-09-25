@@ -7,6 +7,7 @@
     android:layout_marginLeft="@dimen/dimen_10dp"
     android:layout_marginRight="@dimen/dimen_10dp"
     android:orientation="vertical"
+    android:background="@drawable/bg_shape_white_5"
     tools:ignore="MissingDefaultResource">
 
     <LinearLayout
@@ -14,18 +15,18 @@
         android:layout_width="match_parent"
         android:paddingLeft="@dimen/dimen_10dp"
         android:paddingRight="@dimen/dimen_10dp"
-        android:background="@drawable/bg_shape_white_5"
+        android:paddingBottom="@dimen/dimen_20dp"
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_gravity="center_vertical"
-            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
             android:layout_height="@dimen/dimen_40dp">
 
             <View
                 android:layout_width="@dimen/dimen_3dp"
-                android:background="@color/white"
+                android:background="@color/cardview_dark_background"
                 android:layout_height="@dimen/dimen_40dp"/>
             <TextView
                 android:text="翻译"
@@ -48,10 +49,11 @@
             android:layout_height="wrap_content"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:id="@+id/learnBasicInterpret"
             android:orientation="vertical"
-            android:id="@+id/learn_interpretation_more"
-            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/dimen_10dp"
             android:layout_height="wrap_content">
 
             <LinearLayout
@@ -62,7 +64,49 @@
 
                 <View
                     android:layout_width="@dimen/dimen_3dp"
-                    android:background="@color/white"
+                    android:background="@color/cardview_dark_background"
+                    android:layout_height="@dimen/dimen_40dp"/>
+
+                <TextView
+                    android:text="基本释义"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/dimen_20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvBasicInterpret"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dimen_8dp"
+                android:paddingBottom="@dimen/dimen_8dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_14sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/learn_interpretation_more"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:layout_height="@dimen/dimen_40dp">
+
+                <View
+                    android:layout_width="@dimen/dimen_3dp"
+                    android:background="@color/cardview_dark_background"
                     android:layout_height="@dimen/dimen_40dp"/>
                 <TextView
                     android:text="本义"
@@ -86,59 +130,56 @@
                 android:textSize="@dimen/dimen_14sp" />
 
 
-
         </LinearLayout>
 
-    </LinearLayout>
 
-
-    <LinearLayout
-        android:id="@+id/learn_deconstruction"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:paddingLeft="@dimen/dimen_10dp"
-        android:paddingRight="@dimen/dimen_10dp"
-        android:paddingTop="@dimen/dimen_20dp"
-        android:layout_marginTop="@dimen/dimen_12dp"
-        android:background="@drawable/bg_shape_white_5"
-        android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/learn_deconstruction"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_gravity="center_vertical"
-            android:layout_height="@dimen/dimen_40dp">
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_height="wrap_content">
 
-            <View
-                android:layout_width="@dimen/dimen_3dp"
-                android:background="@color/white"
-                android:layout_height="@dimen/dimen_40dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_vertical"
+                android:layout_height="@dimen/dimen_40dp">
+
+                <View
+                    android:layout_width="@dimen/dimen_3dp"
+                    android:background="@color/cardview_dark_background"
+                    android:layout_height="@dimen/dimen_40dp"/>
+
+                <TextView
+                    android:text="解析"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dimen_10dp"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/dimen_20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
 
             <TextView
-                android:text="解构"
-                android:textColor="@color/black"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="@dimen/dimen_10dp"
-                android:layout_gravity="center"
-                android:textSize="@dimen/dimen_20sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-        <RelativeLayout
-            android:id="@+id/releate_webView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:ignore="WebViewLayout">
-
-            <WebView
-                android:id="@+id/webView"
+                android:id="@+id/tvcharacterResolve"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layerType="software" />
-        </RelativeLayout>
+                android:paddingTop="@dimen/dimen_8dp"
+                android:paddingBottom="@dimen/dimen_8dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_14sp" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
+
+
+
 
 
 </LinearLayout>

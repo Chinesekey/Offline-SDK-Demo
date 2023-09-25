@@ -1,2 +1,5 @@
 rootProject.name='sdkDemo'
 include ':app'
+include ':library'
+//include ':dictionarysdk'
+

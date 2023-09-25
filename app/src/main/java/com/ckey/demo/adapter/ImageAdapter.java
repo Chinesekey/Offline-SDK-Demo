@@ -39,21 +39,24 @@ public class ImageAdapter extends BannerAdapter<String, RecyclerView.ViewHolder>
     public void onBindView(RecyclerView.ViewHolder holder, String data, int position, int size) {
         ImageHolder imageHolder = (ImageHolder) holder;
         if (!TextUtils.isEmpty(data)) {
-            imageHolder.imageView.setVisibility(View.VISIBLE);
-            RequestOptions requestOptions = new RequestOptions()
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.drawable.banner)  //指定加载前显示的图片资源
-                    .fallback(R.drawable.banner)//指定传递加载资源为 null 的时候，显示的图片资源
-                    .error(R.drawable.banner);//指定加载失败显示的图片资源
-            try {
-                if (!TextUtils.isEmpty(data) && !data.contains("null")) {
-                    Glide.with(context).load(data).apply(requestOptions).into(imageHolder.imageView);
-                } else {
-                    Glide.with(context).load(R.drawable.banner).apply(requestOptions).into(imageHolder.imageView);
-                }
-            } catch (Exception e) {
-                Glide.with(context).load(R.drawable.banner).apply(requestOptions).into(imageHolder.imageView);
-            }
+
+            Glide.with(context).load(data).into(imageHolder.imageView);
+//
+//            imageHolder.imageView.setVisibility(View.VISIBLE);
+//            RequestOptions requestOptions = new RequestOptions()
+//                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                    .placeholder(R.drawable.banner)  //指定加载前显示的图片资源
+//                    .fallback(R.drawable.banner)//指定传递加载资源为 null 的时候，显示的图片资源
+//                    .error(R.drawable.banner);//指定加载失败显示的图片资源
+//            try {
+//                if (!TextUtils.isEmpty(data) && !data.contains("null")) {
+//                    Glide.with(context).load(data).apply(requestOptions).into(imageHolder.imageView);
+//                } else {
+//                    Glide.with(context).load(R.drawable.banner).apply(requestOptions).into(imageHolder.imageView);
+//                }
+//            } catch (Exception e) {
+//                Glide.with(context).load(R.drawable.banner).apply(requestOptions).into(imageHolder.imageView);
+//            }
 
         } else {
         }
